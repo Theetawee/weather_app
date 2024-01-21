@@ -19,10 +19,8 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   late Future<dynamic> weather;
 
-
-
   Future getCurrentWeather() async {
-    String cityName = "Greenland";
+    String cityName = "Kampala";
     String apiIdKey = appId;
     var url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/forecast/?q=$cityName&APPID=$apiIdKey');
@@ -45,7 +43,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   void initState() {
     super.initState();
 
-    weather=getCurrentWeather();
+    weather = getCurrentWeather();
   }
 
   @override
@@ -56,7 +54,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
           centerTitle: true,
           elevation: 1.0,
           actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.refresh))
+            IconButton(
+                onPressed: () {
+                  setState(() {
+                    weather = getCurrentWeather();
+                  });
+                },
+                icon: const Icon(Icons.refresh))
           ],
         ),
         body: FutureBuilder(
