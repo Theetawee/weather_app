@@ -101,31 +101,33 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
               final iconInfo = getIconAndColor(currentWeather);
 
-              return Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //main card
-                    MainWeatherCard(
-                        cityName: cityName,
-                        currentTemp: currentTep.toString(),
-                        currentWeather: currentWeather,
-                        iconColor: iconInfo.iconColor,
-                        icon: iconInfo.icon),
-                    //ForeCast
-                    WeatherForeCastCard(
-                      foreCast: data,
-                    ),
-
-                    //additional information
-
-                    AdditionalInfoCard(
-                        humidity: humidity.toString(),
-                        visibility: visibility.toString(),
-                        windSpeed: windSpeed.toString(),
-                        pressure: pressure.toString())
-                  ],
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //main card
+                      MainWeatherCard(
+                          cityName: cityName,
+                          currentTemp: currentTep.toString(),
+                          currentWeather: currentWeather,
+                          iconColor: iconInfo.iconColor,
+                          icon: iconInfo.icon),
+                      //ForeCast
+                      WeatherForeCastCard(
+                        foreCast: data,
+                      ),
+                
+                      //additional information
+                
+                      AdditionalInfoCard(
+                          humidity: humidity.toString(),
+                          visibility: visibility.toString(),
+                          windSpeed: windSpeed.toString(),
+                          pressure: pressure.toString())
+                    ],
+                  ),
                 ),
               );
             }
